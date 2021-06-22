@@ -1,0 +1,251 @@
+<html>
+    <Head>
+        <title>Form</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <h1>
+        Registration Form
+    </h1>
+    </Head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <div class="main, split left">
+                        <h3>Register Here</h3>
+                        <div class="registration">
+                        
+                        <form action="#" onsubmit=" return validateform()" name="form1" method="POST">
+                
+                
+                            <label for="fname"> First Name</label>
+                            <input type="text" id="fname" name="fname" placeholder="Your Name..." >
+                            <span id="fnamespan"></span>
+                            <br>
+                            <br>
+                
+                            <label for="lname"> Last Name</label>
+                            <input type="text" id="lname" name="lname" placeholder="Your Last Name...">
+                            <span id="lnamespan"></span>
+                            <br>
+                            <br>
+                
+                            <label for="mobnumber"> Mobile Number</label>
+                            <input type="text" id="mobnumber" name="mobnumber" placeholder="Enter Valid Number.."">
+                            <span id="mobnumberspan"></span>
+                            <br>
+                            <br>
+                
+                            <label for="email">Enter Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Email ID..." >
+                            <span id="emailspan"></span>
+                            <br>
+                            <br>
+                
+                            <lable for="country">Country</lable>
+                            <select id="country" name="country" placeholder="Select Counrty...">
+                                <option hidden value="">Select...</option>>
+                                <option value="australia">Australia</option>
+                                <option value="canada">Canada</option>
+                                <option value="India">India</option>
+                                <option value="usa">USA</option>
+                                <span id="countryspan"></span>
+                            <br>
+                            <br>
+                
+        
+                            <lable for="password">Password</lable>>
+                            <input type="text" id="password" name="password" placeholder="Password...">
+                            <span id="password"> </span>
+                            <br>
+                            <br>
+                         <span id="error"></span>
+                    
+                            <input  type="submit" name="submit" id="submit" value="Submit" class="btn
+                            btn success" onclick = "WriteCookie();"/>
+                        
+                            <!-- <button id="submit">Submit</button> //-->
+                          
+                        </form>
+                          
+                        </div>
+                        </div>
+                </td>>
+                <td>
+                    <div>
+                        <table  id="show" align="right">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mobile Number</th>
+                                    <th>Email ID</th>
+                                    <th>Country</th>
+                                    <th>Password</th>
+                                </tr>
+                            </thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th> 
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>>
+        </table>
+        
+
+         <script type="text/javascript">
+
+         var row = 1;
+         var submit1= document.getElementById("submit");
+         submit.addEventListner("click",displayDetails);
+ 
+             function validateform(){
+                
+                var fname =document.getElementById('fname').value;
+                var lname =document.getElementById('lname').value;
+                var mobnumber =document.getElementById('mobnumber').value;
+                var email =document.getElementById('email').value;
+                var country =document.getElementById('country').value;
+                var password =document.getElementById('password').value;
+                console.log("Hello")
+                console.log(fname)
+                console.log(lname)
+                console.log(mobnumber)
+                console.log(email)
+                console.log(country)
+                console.log(password)
+
+            
+
+                if(fname === "" || lname ==="" || mobnumber ===" " || email ==="" || country ==="" || password ==="" ){
+                    document.getElementById('fnamespan').innerHTML="*Please fill the first name";
+                    document.getElementById('lnamespan').innerHTML="*please fill the last name";
+                    document.getElementById('mobnumberspan').innerHTML="*please fill mobile number";
+                    document.getElementById('emailspan').innerHTML="*Please Fill Email ID";
+                    document.getElementById('countryspan').innerHTML="*please select country";
+                    document.getElementById('passwordspan').innerHTML="*Enter your password";
+
+
+                     //document.getElementById('error').innerHTML="error";
+                   return false;
+                }
+
+                /*
+                var display = document.getElementById("show");
+                
+                var newRow = display.insertRow(row);
+
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+
+
+                cell1.innerHTML = fname;
+                cell1.innerHTML = lname;
+                cell1.innerHTML = mobnumber;
+                cell1.innerHTML = email;
+                cell1.innerHTML = country;
+                cell1.innerHTML = password;
+
+                */
+
+
+
+                Cookis.set("ieat", "true", { express: 2 });
+                var myCookie = cookies.get('ieat');
+                console.log(myCookies);
+
+
+
+
+                /*
+                function setCookie(fname,lname,mobnumber,email,country,password, cvalue, exdays) {
+                 const d = new Date();
+                 d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                 let expires = "expires="+ d.toUTCString();
+                 document.cookie = fname + "=" + lname + "=" + mobnumber + "=" + email + "=" + country + "=" + password + "=" + cvalue + ";" + expires + ";path=/";
+                }
+                function getCookie(cname) {
+                    let name = cname + "=";
+                     let decodedCookie = decodeURIComponent(document.cookie);
+                     let ca = decodedCookie.split(';');
+                 for(let i = 0; i < ca.length; i++) {
+                  let c = ca[i];
+                 while (c.charAt(0) == ' ') {
+                 c = c.substring(1);
+                 }
+                   if (c.indexOf(name) == 0) {
+                   return c.substring(name.length, c.length);
+                  }
+                 }
+                 return "";
+                }
+                */
+               
+
+
+            /* function WriteCookie() {
+               if( document.formvalidate.fname.value == "" ) {
+                  alert("Enter some value!");
+                  return;
+               }
+               cookievalue = escape(document.formvalidate.fname.value) + ";";
+               document.cookie = "name=" + cookievalue;
+               document.write ("Setting Cookies : " + "name=" + cookievalue );
+            }
+
+            */
+
+            
+
+                /* console.log( document.getElementById('error'))
+                var error =  document.getElementById('error').value;
+                if(error === 'error') {
+                    
+                    return false ; 
+                }
+               
+                if(lname ===""){
+                    document.getElementById('lnamespan').innerHTML="*please fill the last name";
+                      document.getElementById('error').innerHTML="error";
+                     return false;
+                }
+
+
+                if(mobnumber ===" "){
+                    document.getElementById('mobnumberspan').innerHTML="*please fill mobile number";
+                      document.getElementById('error').innerHTML="error";
+                    return false;
+                }
+
+                if(email ===""){
+                    document.getElementById('emailspan').innerHTML="*Please Fill Email ID";
+                      document.getElementById('error').innerHTML="error";
+                   return false;
+                }
+
+                if(country ===""){
+                    document.getElementById('countryspan').innerHTML="*please select country";
+                      document.getElementById('error').innerHTML="error";
+                    return false;
+                }
+ 
+                if(password ===""){
+                    document.getElementById('passwordspan').innerHTML="*Enter your password";
+                      document.getElementById('error').innerHTML="error";
+                   return false;
+                }*/
+            
+                        
+             }
+
+
+                
+            </Script>
+    </body>
+</html>
