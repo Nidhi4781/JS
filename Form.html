@@ -30,7 +30,7 @@
                             <br>
                 
                             <label for="mobnumber"> Mobile Number</label>
-                            <input type="text" id="mobnumber" name="mobnumber" placeholder="Enter Valid Number.."">
+                            <input type="text" id="mobnumber" name="mobnumber" placeholder="Enter Valid Number..">
                             <span id="mobnumberspan"></span>
                             <br>
                             <br>
@@ -61,7 +61,9 @@
                          <span id="error"></span>
                     
                             <input  type="submit" name="submit" id="submit" value="Submit" class="btn
-                            btn success" onclick = "WriteCookie();"/>
+                            btn success" />
+                            <input  type="button" name="call" onclick="validateform()" id="call" value="call" class="btn
+                            btn success" />
                         
                             <!-- <button id="submit">Submit</button> //-->
                           
@@ -69,7 +71,7 @@
                           
                         </div>
                         </div>
-                </td>>
+                </td>
                 <td>
                     <div>
                         <table  id="show" align="right">
@@ -94,24 +96,23 @@
                         </table>
                     </div>
                 </td>
-            </tr>>
+            </tr>
         </table>
         
 
          <script type="text/javascript">
 
-         var row = 1;
-         var submit1= document.getElementById("submit");
-         submit.addEventListner("click",displayDetails);
+         
  
              function validateform(){
-                
+               
                 var fname =document.getElementById('fname').value;
                 var lname =document.getElementById('lname').value;
                 var mobnumber =document.getElementById('mobnumber').value;
                 var email =document.getElementById('email').value;
                 var country =document.getElementById('country').value;
                 var password =document.getElementById('password').value;
+
                 console.log("Hello")
                 console.log(fname)
                 console.log(lname)
@@ -120,131 +121,27 @@
                 console.log(country)
                 console.log(password)
 
-            
+           
 
-                if(fname === "" || lname ==="" || mobnumber ===" " || email ==="" || country ==="" || password ==="" ){
-                    document.getElementById('fnamespan').innerHTML="*Please fill the first name";
-                    document.getElementById('lnamespan').innerHTML="*please fill the last name";
-                    document.getElementById('mobnumberspan').innerHTML="*please fill mobile number";
-                    document.getElementById('emailspan').innerHTML="*Please Fill Email ID";
-                    document.getElementById('countryspan').innerHTML="*please select country";
-                    document.getElementById('passwordspan').innerHTML="*Enter your password";
-
-
-                     //document.getElementById('error').innerHTML="error";
-                   return false;
-                }
-
-                /*
-                var display = document.getElementById("show");
-                
-                var newRow = display.insertRow(row);
-
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
+                // if(fname === "" || lname ==="" || mobnumber ===" " || email ==="" || country ==="" || password ==="" ){
+                //     document.getElementById('fnamespan').innerHTML="*Please fill the first name";
+                //     document.getElementById('lnamespan').innerHTML="*please fill the last name";
+                //     document.getElementById('mobnumberspan').innerHTML="*please fill mobile number";
+                //     document.getElementById('emailspan').innerHTML="*Please Fill Email ID";
+                //     document.getElementById('countryspan').innerHTML="*please select country";
+                //     document.getElementById('passwordspan').innerHTML="*Enter your password";
 
 
-                cell1.innerHTML = fname;
-                cell1.innerHTML = lname;
-                cell1.innerHTML = mobnumber;
-                cell1.innerHTML = email;
-                cell1.innerHTML = country;
-                cell1.innerHTML = password;
-
-                */
-
-/* 
-*/
-
-                Cookis.set("ieat", "true", { express: 2 });
-                var myCookie = cookies.get('ieat');
-                console.log(myCookies);
-
-
-
-
-                /*
-                function setCookie(fname,lname,mobnumber,email,country,password, cvalue, exdays) {
-                 const d = new Date();
-                 d.setTime(d.getTime() + (exdays*24*60*60*1000));
-                 let expires = "expires="+ d.toUTCString();
-                 document.cookie = fname + "=" + lname + "=" + mobnumber + "=" + email + "=" + country + "=" + password + "=" + cvalue + ";" + expires + ";path=/";
-                }
-                function getCookie(cname) {
-                    let name = cname + "=";
-                     let decodedCookie = decodeURIComponent(document.cookie);
-                     let ca = decodedCookie.split(';');
-                 for(let i = 0; i < ca.length; i++) {
-                  let c = ca[i];
-                 while (c.charAt(0) == ' ') {
-                 c = c.substring(1);
-                 }
-                   if (c.indexOf(name) == 0) {
-                   return c.substring(name.length, c.length);
-                  }
-                 }
-                 return "";
-                }
-                */
-               
-
-
-            /* function WriteCookie() {
-               if( document.formvalidate.fname.value == "" ) {
-                  alert("Enter some value!");
-                  return;
-               }
-               cookievalue = escape(document.formvalidate.fname.value) + ";";
-               document.cookie = "name=" + cookievalue;
-               document.write ("Setting Cookies : " + "name=" + cookievalue );
-            }
-
-            */
-
-            
-
-                /* console.log( document.getElementById('error'))
-                var error =  document.getElementById('error').value;
-                if(error === 'error') {
-                    
-                    return false ; 
-                }
-               
-                if(lname ===""){
-                    document.getElementById('lnamespan').innerHTML="*please fill the last name";
-                      document.getElementById('error').innerHTML="error";
-                     return false;
-                }
-
-
-                if(mobnumber ===" "){
-                    document.getElementById('mobnumberspan').innerHTML="*please fill mobile number";
-                      document.getElementById('error').innerHTML="error";
-                    return false;
-                }
-
-                if(email ===""){
-                    document.getElementById('emailspan').innerHTML="*Please Fill Email ID";
-                      document.getElementById('error').innerHTML="error";
-                   return false;
-                }
-
-                if(country ===""){
-                    document.getElementById('countryspan').innerHTML="*please select country";
-                      document.getElementById('error').innerHTML="error";
-                    return false;
-                }
- 
-                if(password ===""){
-                    document.getElementById('passwordspan').innerHTML="*Enter your password";
-                      document.getElementById('error').innerHTML="error";
-                   return false;
-                }*/
-            
-                        
+                //      //document.getElementById('error').innerHTML="error";
+                //    return false;
+                // }
+                setCookie(fname, lname, mobnumber,email,country,password,365);
+                    return false;    
              }
-
+                
+             function setCookie(fname,lname,mobnumber,email,country,password, exdays) {
+              localStorage.setItem("fname" , fname )
+            }
 
                 
             </Script>
