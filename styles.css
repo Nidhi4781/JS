@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: rgb(10, 0, 153);
+    text-align: center;
+}
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;   
+}
+th,td{
+    padding: 15px;
+}
+
+div.main{
+    width: 400px;
+    margin: 100px auto 0px auto;
+    padding: 10px,0px, 10px,0px;
+    text-align:left
+    border-radius: 15px;
+}
+input{
+    text-align:left;
+}
+h3{
+    text-align: center;
+    padding: 20px;
+    font-family: sans-serif;
+}
+div.registration{
+    background-color: rgba(204, 187, 90, 0);
+    width: 800px;
+    margin: auto;
+}
+div.table1{
+    text-align:right;
+    align:right;
+
+}
