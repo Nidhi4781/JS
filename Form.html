@@ -1,4 +1,3 @@
-
 <html>
     <Head>
         <title>Form</title>
@@ -8,61 +7,68 @@
     </h1>
     </Head>
     <body>
-        <table>
-            <tr>
-                <td>
+
                     <div class="main, split left">
                         <h3>Register Here</h3>
                         <div class="registration">
                         
-                        <form action="#" onsubmit=" return validateform()" name="form1" method="POST">
-                
-                
+                        <form action="#" onsubmit=" return validateform() " name="form1" method="POST">
+					
+							<div>
                             <label for="fname"> First Name</label>
                             <input type="text" id="fname" name="fname" placeholder="Your Name..." >
                             <span id="fnamespan"></span>
-                            <br>
-                            <br>
+							</div>
                 
+							<div>
                             <label for="lname"> Last Name</label>
                             <input type="text" id="lname" name="lname" placeholder="Your Last Name...">
                             <span id="lnamespan"></span>
-                            <br>
-                            <br>
-                
+                            </div>
+							
+							<div>
                             <label for="mobnumber"> Mobile Number</label>
                             <input type="text" id="mobnumber" name="mobnumber" placeholder="Enter Valid Number.."">
                             <span id="mobnumberspan"></span>
-                            <br>
-                            <br>
+                            </div>
                 
+							<div>
                             <label for="email">Enter Email:</label>
                             <input type="email" id="email" name="email" placeholder="Email ID..." >
                             <span id="emailspan"></span>
-                            <br>
-                            <br>
-                
-                            <lable for="country">Country</lable>
+                            </div>
+
+							<div>
+                            <label for="password">Password </label>
+                            <input type="text" id="password" name="password" placeholder="Password...">
+                            <span id="passwordspan"> </span>
+							</div>
+
+							<div>
+                            <label for="country">Country</label>
                             <select id="country" name="country" placeholder="Select Counrty...">
-                                <option hidden value="">Select...</option>>
+                                <option hidden value="">Select...</option>
                                 <option value="australia">Australia</option>
                                 <option value="canada">Canada</option>
                                 <option value="India">India</option>
                                 <option value="usa">USA</option>
                                 <span id="countryspan"></span>
-                            <br>
-                            <br>
-                
-        
-                            <lable for="password">Password</lable>>
-                            <input type="text" id="password" name="password" placeholder="Password...">
-                            <span id="passwordspan"> </span>
-                            <br>
-                            <br>
-                    
+                            </div>
+							
+							<div>
                             <input  type="submit" name="submit" id="submit" value="Submit" class="btn
                             btn success" />
-                            <input type="button" name="call" onclick="validform()" id="call" class="btn btn success" />
+							</div>
+							<div>
+                             <input type="reset" value="Clear"/>   
+                            
+							<input  type="button" name="call" id="call"  value="call" class="btn
+                            btn success" />
+							</div>
+                            <div>
+                                <input type="button" value="Delete LocalStorage" onclick="deleteData()"/>
+                            </div>
+
                         
                             <!-- <button id="submit">Submit</button> //-->
                           
@@ -70,11 +76,9 @@
                           
                         </div>
                         </div>
-                </td>
-                <td>
+     
                     <div>
-                        <table  id="show" align="right">
-                            <thead>
+                        <table  id="mytable" align="right" border=1 >
                                 <tr>
                                     <th>First Name</th>
                                     <th>Last Name</th>
@@ -83,25 +87,18 @@
                                     <th>Country</th>
                                     <th>Password</th>
                                 </tr>
-                            </thead>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th> 
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
+                                
                         </table>
+						
                     </div>
-                </td>
-            </tr>
-        </table>
         
 
          <script type="text/javascript">
 
+            
+
              function validateform() {
+                 
                 
                 var fname =document.getElementById('fname').value;
                 var lname =document.getElementById('lname').value;
@@ -123,29 +120,95 @@
                     document.getElementById('lnamespan').innerHTML="*please fill the last name";
                     document.getElementById('mobnumberspan').innerHTML="*please fill mobile number";
                     document.getElementById('emailspan').innerHTML="*Please Fill Email ID";
-                    document.getElementById('countryspan').innerHTML="*please select country";
+                    //document.getElementById('countryspan').innerHTML="*please select country";
                     document.getElementById('passwordspan').innerHTML="*Enter your password";
 
 
                      //document.getElementById('error').innerHTML="error";
                    return false;
                 }
-                yjgkujhujh(fname, lname, mobnumber,email,country,password,365);
-                      return false;
-             
+                Local(fname, lname, mobnumber,email,country,password,365);
+                var arr = new Array();
+                    
+                addData(fname, lname, mobnumber,email,country,password);
+                    return;
+
              }
             
             
                 
-             function yjgkujhujh(fname,lname,mobnumber,email,country,password, exdays) {
+             function Local(fname,lname,mobnumber,email,country,password, exdays) {
                 localStorage.setItem("Name", "Nidhi");
-                localStorage.setItem("lname", fname);
+                localStorage.setItem("fname", fname);
                 localStorage.setItem("lname", lname);
                 localStorage.setItem("Number", mobnumber);
                 localStorage.setItem("Email", email);
                 localStorage.setItem("Country", country);
                 localStorage.setItem("Password", password);
+
+                
              }
+             
+
+             function addData(fname, lname, mobnumber,email,country,password){
+                 getData();
+                 arr.push({
+                     fname:document.getElementById('fname').value,
+                     lname:document.getElementById('lname').value,
+                     mobnumber:document.getElementById('mobnumber').value,
+                     email:document.getElementById('email').value,
+                     country:document.getElementById('country').value,
+                     password:document.getElementById('password').value
+
+                 });
+                 localStorage.setItem("localData", JSON.stringify(arr));
+                 showData();
+                 
+                 return;
+
+             }
+             function getData(){
+                 var str =localStorage.getItem("localData");
+                 if(str != null)
+                 arr = JSON.parse(str);
+
+                
+             }
+             function deleteData(){
+                 localStorage.clear()
+             }
+
+             function showData(){
+                 getData();
+
+                 var tbl = document.getElementById("mytable");
+                 var x = tb1.rows.length;
+                 while(--x){
+                     tb1.deleteRow(x);
+                 }
+
+                 for(i=0; i<arr.length; i++){
+
+                     var r = tbl.insertRow();
+                     var cell1 = r.insertCell();
+                     var cell2 = r.insertCell();
+                     var cell3 = r.insertCell();
+                     var cell4 = r.insertCell();
+                     var cell5 = r.insertCell();
+                     var cell6 = r.insertCell();
+
+                     cell1.innerHTML = document.getElementById('fname').value;
+                     cell2.innerHTML = document.getElementById('lname').value;
+                     cell3.innerHTML = document.getElementById('mobnumber').value;
+                     cell4.innerHTML = document.getElementById('email').value;
+                     cell5.innerHTML = document.getElementById('country').value;
+                     cell6.innerHTML = document.getElementById('password').value;
+
+                     return false;
+
+                 }
+             }
+
              
 
                
